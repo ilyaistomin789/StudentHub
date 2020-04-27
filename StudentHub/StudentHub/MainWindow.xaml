@@ -1,0 +1,89 @@
+﻿<Window x:Class="StudentHub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentHub"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
+        Icon="Sources/Window/user.ico"
+        Title="Student Hub" Height="600" Width="1000"
+        WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF00FFAE" Offset="0.0"/>
+                    <GradientStop Color="#FF00A2FF" Offset="1.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <StackPanel>
+            <TextBlock Text="Student Hub" FontSize="35" Margin="5" TextAlignment="Center"/>
+            <StackPanel>
+                <Button Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_LogOut}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource app_ExitButton}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_RequestToAdjustment}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_RequestToRetake}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_PutGapsBySubjects}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_EditInformation}"/>
+                    </StackPanel>
+                </Button>
+                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_SetRatings}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{DynamicResource m_Welcome}" FontSize="30" TextAlignment="Center"/>
+            <DataGrid x:Name="dg_Progress" AutoGenerateColumns="False" FontFamily="Helvetica" FontSize="20" 
+                      BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
+                      CanUserResizeRows="False" Width="600" Background="Transparent" VerticalGridLinesBrush="Transparent" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= SubjectName}" Header="Subject" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= PDate}" Header="Date" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= Note}" Header="Note"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid> 
+</Window>
