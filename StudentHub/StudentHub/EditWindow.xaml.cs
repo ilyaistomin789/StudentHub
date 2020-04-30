@@ -10,37 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StudentHub.University;
 
 namespace StudentHub
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для EditWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditWindow : Window
     {
         private Student _student = new Student();
-        public MainWindow()
+        public EditWindow()
         {
             InitializeComponent();
         }
 
-        public MainWindow(Student student)
+        public EditWindow(Student student)
         {
             InitializeComponent();
             _student = student;
         }
 
-        private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void E_editInformationButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.DragMove();
-        }
 
-        private void EditInformationButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

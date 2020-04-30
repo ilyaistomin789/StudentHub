@@ -40,3 +40,5 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\Ma
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\AdminWindow.g.cs
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\AdminWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\EditWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\EditWindow.baml

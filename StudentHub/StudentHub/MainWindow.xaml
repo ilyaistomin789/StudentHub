@@ -22,46 +22,46 @@
         <StackPanel>
             <TextBlock Text="Student Hub" FontSize="35" Margin="5" TextAlignment="Center"/>
             <StackPanel>
-                <Button Height="50" Margin="10,10,10,0">
-                    <StackPanel>
-                        <Image/>
-                        <TextBlock Text="{DynamicResource m_LogOut}"/>
-                    </StackPanel>
-                </Button>
-                <Button Height="50" Margin="10,10,10,0">
-                    <StackPanel>
-                        <Image/>
-                        <TextBlock Text="{DynamicResource app_ExitButton}"/>
-                    </StackPanel>
-                </Button>
-                <Button Height="50" Margin="10,10,10,0">
+                <Button x:Name="adjustmentButton" Height="50" Margin="10,10,10,0">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_RequestToAdjustment}"/>
                     </StackPanel>
                 </Button>
-                <Button Height="50" Margin="10,10,10,0">
+                <Button x:Name="retakeButton" Height="50" Margin="10,10,10,0">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_RequestToRetake}"/>
                     </StackPanel>
                 </Button>
-                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                <Button x:Name="putGapsButton" Height="50" Margin="10,10,10,0" Visibility="Visible">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_PutGapsBySubjects}"/>
                     </StackPanel>
                 </Button>
-                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                <Button x:Name="editInformationButton" Height="50" Margin="10,10,10,0" Visibility="Visible" Click="EditInformationButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_EditInformation}"/>
                     </StackPanel>
                 </Button>
-                <Button Height="50" Margin="10,10,10,0" Visibility="Visible">
+                <Button x:Name="setRatingsButton" Height="50" Margin="10,10,10,0" Visibility="Visible">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_SetRatings}"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="logOutButton" Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_LogOut}"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="exitButton" Height="50" Margin="10,10,10,0">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource app_ExitButton}"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

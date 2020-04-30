@@ -24,6 +24,7 @@ namespace StudentHub.Account
     public partial class Login : Window
     {
         private Window _window;
+        private Student student = new Student();
         public Login()
         {
 
@@ -55,6 +56,36 @@ namespace StudentHub.Account
             return Convert.ToInt32(isAdminCommand.ExecuteScalar()) > 0;
         }
 
+        private void SetStudentFields(int userId, SqlConnection connection)
+        {
+            string setStudentFieldsProcedure = "SET_STUDENT_FIELDS";
+            SqlCommand setStudentFields = new SqlCommand(setStudentFieldsProcedure, connection);
+            setStudentFields.CommandType = CommandType.StoredProcedure;
+            SqlParameter userIdParameter = new SqlParameter
+            {
+                ParameterName = "UserId",
+                Value = userId
+            };
+            setStudentFields.Parameters.Add(userIdParameter);
+            var currentStudent = setStudentFields.ExecuteReader();
+            if (currentStudent.HasRows)
+            {
+                while (currentStudent.Read())
+                {
+                    student.StudentId = currentStudent.GetInt32(0);
+                    student.UserId = currentStudent.GetInt32(1);
+                    student.Name = currentStudent.GetString(2);
+                    student.StudentStatus = currentStudent.GetString(3);
+                    student.Course = currentStudent.GetInt32(4);
+                    student.Group = currentStudent.GetInt32(5);
+                    student.Specialization = currentStudent.GetString(6);
+                    student.Faculty = currentStudent.GetString(7);
+                    student.Birthday = currentStudent.GetDateTime(8).ToString();
+                }
+            }
+
+        }
+
         private void LogInButton_OnClick(object sender, RoutedEventArgs e)
         {
             bool userExist = false;
@@ -68,7 +99,7 @@ namespace StudentHub.Account
 
             if (logIn_Password.Password == String.Empty)
             {
-                MessageBox.Show("Please, enter the password");
+                MessageBox.Show("Please, enter the Password");
                 return;
             }
             try
@@ -107,7 +138,8 @@ namespace StudentHub.Account
                         else
                         {
                             SqlDataBaseConnection.ApplyUserPrivileges();
-                            _window = new MainWindow();
+                            SetStudentFields(Convert.ToInt32(currentUser.UserId),connection);
+                            _window = new MainWindow(student);
                             _window.Show();
                             this.Close();
                         }
