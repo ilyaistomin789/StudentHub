@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudentHub.University;
 
 namespace StudentHub
 {
@@ -20,9 +21,16 @@ namespace StudentHub
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Student _student = new Student();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public MainWindow(Student student)
+        {
+            InitializeComponent();
+            _student = student;
         }
 
         private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

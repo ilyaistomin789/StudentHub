@@ -12,9 +12,9 @@ namespace StudentHub.DataBase
 {
     public static class SqlDataBaseConnection
     {
-            private const string UserConnectionString = @"Data Source=.\MSSQLSERVER;Initial Catalog=StudentHub; Integrated Security=False;User ID=Default_User;Password=password";
-            private const string AdminConnectionString = @"Data Source=.\MSSQLSERVER;Initial Catalog=StudentHub; Integrated Security=False;User ID=Admin_User;Password=password";
-            private const string DefaultConnectionString = @"Data Source=.\MSSQLSERVER;Initial Catalog=StudentHub; Integrated Security=True";
+            private const string UserConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=False;User ID=Default_User;Password=password";
+            private const string AdminConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=False;User ID=Admin_User;Password=password";
+            private const string DefaultConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=True";
 
             public static string data = DefaultConnectionString;
 
@@ -32,7 +32,7 @@ namespace StudentHub.DataBase
             private const string DB_NAME = "StudentHub";
 
             private static readonly string CREATE_DB_QUERY = $"Use master; CREATE DATABASE {DB_NAME};";
-            private static readonly string SQL_SCRIPT_FILE_PATH = Directory.GetCurrentDirectory() + @"\CreatingDbScript.sql";
+            private static readonly string SQL_SCRIPT_FILE_PATH = Directory.GetCurrentDirectory() + @"\StudentHubSqlTables.sql";
 
             private static bool IsDbCreated = false;
 

@@ -39,7 +39,8 @@
 
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Text="{StaticResource acc_UserName}"
+                    <TextBox x:Name="logIn_UserName"
+                             Text="{StaticResource acc_UserName}"
                              FontFamily="Helvetica"
                              FontSize="20"
                              HorizontalAlignment="Center"
@@ -63,7 +64,8 @@
                         Opacity="0.5"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                    <PasswordBox Password="Password"
+                    <PasswordBox x:Name="logIn_Password"
+                             Password="Password"
                              FontFamily="Helvetica"
                              FontSize="20"
                              HorizontalAlignment="Center"

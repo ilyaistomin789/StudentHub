@@ -8,6 +8,5 @@
     <Style x:Key="DataGridColumnHeader">
         <Setter Property="DataGridColumnHeader.Background" Value="Transparent"/>
         <Setter Property="DataGridColumnHeader.Height" Value="60"/>
-
     </Style>
 </ResourceDictionary>

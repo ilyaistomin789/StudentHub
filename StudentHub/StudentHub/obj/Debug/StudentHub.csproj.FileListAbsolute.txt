@@ -33,3 +33,10 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\So
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Account\SignUp.g.cs
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Account\SignUp.baml
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Decoration\ElementProperty.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignColors.dll
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignColors.pdb
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\AdminWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\AdminWindow.baml
