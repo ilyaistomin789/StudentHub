@@ -22,19 +22,19 @@
         <StackPanel>
             <TextBlock Text="Student Hub" FontSize="35" Margin="5" TextAlignment="Center"/>
             <StackPanel>
-                <Button x:Name="adjustmentButton" Height="50" Margin="10,10,10,0">
+                <Button x:Name="adjustmentButton" Height="50" Margin="10,10,10,0" Click="AdjustmentButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_RequestToAdjustment}"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="retakeButton" Height="50" Margin="10,10,10,0">
+                <Button x:Name="retakeButton" Height="50" Margin="10,10,10,0" Click="RetakeButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_RequestToRetake}"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="putGapsButton" Height="50" Margin="10,10,10,0" Visibility="Visible">
+                <Button x:Name="putGapsButton" Height="50" Margin="10,10,10,0" Visibility="Collapsed" Click="PutGapsButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_PutGapsBySubjects}"/>
@@ -46,19 +46,19 @@
                         <TextBlock Text="{DynamicResource m_EditInformation}"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="setRatingsButton" Height="50" Margin="10,10,10,0" Visibility="Visible">
+                <Button x:Name="setRatingsButton" Height="50" Margin="10,10,10,0" Visibility="Collapsed" Click="SetRatingsButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_SetRatings}"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="logOutButton" Height="50" Margin="10,10,10,0">
+                <Button x:Name="logOutButton" Height="50" Margin="10,10,10,0" Click="LogOutButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource m_LogOut}"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="exitButton" Height="50" Margin="10,10,10,0">
+                <Button x:Name="exitButton" Height="50" Margin="10,10,10,0" Click="ExitButton_OnClick">
                     <StackPanel>
                         <Image/>
                         <TextBlock Text="{DynamicResource app_ExitButton}"/>
@@ -67,15 +67,13 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <TextBlock Text="{DynamicResource m_Welcome}" FontSize="30" TextAlignment="Center"/>
-            <DataGrid x:Name="dg_Progress" AutoGenerateColumns="False" FontFamily="Helvetica" FontSize="20" 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="{DynamicResource m_Welcome}" FontSize="30"/>
+                <TextBlock x:Name="studentNameTextBlock" FontSize="30"/>
+            </StackPanel>
+            <DataGrid x:Name="dg_Progress" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="600" Background="Transparent" VerticalGridLinesBrush="Transparent" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= SubjectName}" Header="Subject" Width="200"/>
-                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= PDate}" Header="Date" Width="200"/>
-                    <DataGridTextColumn Binding="{Binding Source=Progress, Path= Note}" Header="Note"/>
-                </DataGrid.Columns>
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
             </DataGrid>
         </StackPanel>
     </Grid> 

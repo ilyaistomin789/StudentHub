@@ -73,21 +73,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdjustmentWindow.xaml.cs">
+      <DependentUpon>AdjustmentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWindow.xaml.cs">
       <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PutGapsWindow.xaml.cs">
+      <DependentUpon>PutGapsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetakeWindow.xaml.cs">
+      <DependentUpon>RetakeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetRatingsWindow.xaml.cs">
+      <DependentUpon>SetRatingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="University\Progress.cs" />
     <Compile Include="University\Student.cs" />
     <Compile Include="University\Subject.cs" />
+    <Compile Include="University\UniversityEssence.cs" />
     <Compile Include="University\User.cs" />
     <Page Include="Account\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Account\SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdjustmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,6 +145,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PutGapsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetakeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetRatingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sources\Languages\lang.ru-RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

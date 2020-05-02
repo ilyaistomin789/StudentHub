@@ -58,16 +58,16 @@ namespace StudentHub.Account
 
         private void SetStudentFields(int userId, SqlConnection connection)
         {
-            string setStudentFieldsProcedure = "SET_STUDENT_FIELDS";
-            SqlCommand setStudentFields = new SqlCommand(setStudentFieldsProcedure, connection);
-            setStudentFields.CommandType = CommandType.StoredProcedure;
+            string getStudentFieldsProcedure = "GET_STUDENT_FIELDS";
+            SqlCommand getStudentFields = new SqlCommand(getStudentFieldsProcedure, connection);
+            getStudentFields.CommandType = CommandType.StoredProcedure;
             SqlParameter userIdParameter = new SqlParameter
             {
                 ParameterName = "UserId",
                 Value = userId
             };
-            setStudentFields.Parameters.Add(userIdParameter);
-            var currentStudent = setStudentFields.ExecuteReader();
+            getStudentFields.Parameters.Add(userIdParameter);
+            var currentStudent = getStudentFields.ExecuteReader();
             if (currentStudent.HasRows)
             {
                 while (currentStudent.Read())
@@ -82,6 +82,7 @@ namespace StudentHub.Account
                     student.Faculty = currentStudent.GetString(7);
                     student.Birthday = currentStudent.GetDateTime(8).ToString();
                 }
+                currentStudent.Close();
             }
 
         }

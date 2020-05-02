@@ -25,5 +25,18 @@
     <v:String x:Key="e_StudentCourse">Course</v:String>
     <v:String x:Key="e_StudentGroup">Group</v:String>
     <v:String x:Key="e_StudentFaculty">Faculty</v:String>
+    <v:String x:Key="a_AdjustmentDate">Adjustment Date</v:String>
+    <v:String x:Key="a_Adjustment">Adjustment</v:String>
+    <v:String x:Key="r_Retake">Retake</v:String>
+    <v:String x:Key="r_RetakeDate">Retake Date</v:String>
+    <v:String x:Key="s_SetRatings">Set Ratings</v:String>
+    <v:String x:Key="s_DateOfIssue">Date of issue</v:String>
+    <v:String x:Key="app_Subject">Subject</v:String>
+    <v:String x:Key="app_StudentName">Student</v:String>
+    <v:String x:Key="app_Note">Note</v:String>
+    <v:String x:Key="p_CountOfGaps">Count of gaps</v:String>
+    <v:String x:Key="p_PutGaps">Put Gaps</v:String>
+    <v:String x:Key="app_SendRequest">Send Request</v:String>
+    <v:String x:Key="app_Save">Save</v:String>
     <v:String x:Key="app_Creator">Created by Ilya Istomin 2020</v:String>
 </ResourceDictionary>
