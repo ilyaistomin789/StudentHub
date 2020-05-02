@@ -91,6 +91,9 @@
     <Compile Include="SetRatingsWindow.xaml.cs">
       <DependentUpon>SetRatingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowInformationWindow.xaml.cs">
+      <DependentUpon>ShowInformationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="University\Progress.cs" />
     <Compile Include="University\Student.cs" />
     <Compile Include="University\Subject.cs" />
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SetRatingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowInformationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

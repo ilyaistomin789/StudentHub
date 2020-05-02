@@ -121,5 +121,11 @@ namespace StudentHub
             _window = new PutGapsWindow(_student);
             _window.Show();
         }
+
+        private void ShowInfoButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _window = new ShowInformationWindow(_student);
+            _window.Show();
+        }
     }
 }

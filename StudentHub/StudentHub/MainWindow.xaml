@@ -28,6 +28,12 @@
                         <TextBlock Text="{DynamicResource m_RequestToAdjustment}"/>
                     </StackPanel>
                 </Button>
+                <Button x:Name="showInfoButton" Height="50" Margin="10,10,10,0" Click="ShowInfoButton_OnClick">
+                    <StackPanel>
+                        <Image/>
+                        <TextBlock Text="{DynamicResource m_ShowInformation}"/>
+                    </StackPanel>
+                </Button>
                 <Button x:Name="retakeButton" Height="50" Margin="10,10,10,0" Click="RetakeButton_OnClick">
                     <StackPanel>
                         <Image/>

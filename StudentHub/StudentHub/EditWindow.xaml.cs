@@ -128,7 +128,7 @@ namespace StudentHub
                             _student.Group = done.GetInt32(5);
                             _student.Specialization = done.GetString(6);
                             _student.Faculty = done.GetString(7);
-                            _student.Birthday = done.GetDateTime(8).ToString();
+                            _student.Birthday = done.GetDateTime(8).ToString("d");
                         }
                         done.Close();
                     }

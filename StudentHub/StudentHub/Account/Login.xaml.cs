@@ -80,7 +80,7 @@ namespace StudentHub.Account
                     student.Group = currentStudent.GetInt32(5);
                     student.Specialization = currentStudent.GetString(6);
                     student.Faculty = currentStudent.GetString(7);
-                    student.Birthday = currentStudent.GetDateTime(8).ToString();
+                    student.Birthday = currentStudent.GetDateTime(8).ToString("d");
                 }
                 currentStudent.Close();
             }

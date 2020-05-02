@@ -50,3 +50,5 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Se
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\SetRatingsWindow.baml
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\PutGapsWindow.g.cs
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\PutGapsWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\ShowInformationWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\ShowInformationWindow.baml
