@@ -40,19 +40,19 @@
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="logIn_UserName"
-                             Text="{StaticResource acc_UserName}"
+                             Tag="{DynamicResource acc_UserName}"
                              FontFamily="Helvetica"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="White"
-                             BorderThickness="0"
                              Width="235"
                              Height="25"
                              Background="Transparent"
                              FontWeight="Light"
                              Opacity="0.5"
                              HorizontalContentAlignment="Left"
-                             Margin="23,0,0,0"/>
+                             Margin="23,0,0,0"
+                             Style="{StaticResource placeHolder}"/>
                     <iconPacks:PackIconMaterial Kind="Account" 
                                                 Foreground="White"
                                                 VerticalAlignment="Center"
@@ -77,7 +77,8 @@
                              FontWeight="Light"
                              Opacity="0.5"
                              HorizontalContentAlignment="Left"
-                             Margin="23,0,0,0"/>
+                             Margin="23,0,0,0"
+                             />
                     <iconPacks:PackIconMaterial Kind="TextboxPassword" 
                                                 Foreground="White"
                                                 VerticalAlignment="Center"

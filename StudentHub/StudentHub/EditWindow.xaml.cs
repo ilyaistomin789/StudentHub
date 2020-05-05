@@ -42,26 +42,52 @@ namespace StudentHub
 
         private void InitializeComboBox()
         {
-            foreach (var t in university.faculties)
+            string getSpecQuery = "SELECT Specialization FROM Specialization";
+            string getFacultyQuery = "Select Faculty FROM Faculty";
+            try
             {
-                e_facultyComboBox.Items.Add(t);
-            }
+                using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
+                {
+                    connection.Open();
+                    SqlCommand getSpecCommand = new SqlCommand(getSpecQuery,connection);
+                    SqlCommand getFacultyCommand = new SqlCommand(getFacultyQuery,connection);
+                    getSpecCommand.CommandType = CommandType.Text;
+                    getFacultyCommand.CommandType = CommandType.Text;
+                    var specializations = getSpecCommand.ExecuteReader();
+                    if (specializations.HasRows)
+                    {
+                        while (specializations.Read())
+                        {
+                            e_specializationComboBox.Items.Add(specializations.GetString(0));
+                        }
+                        specializations.Close();
+                    }
+                    var faculties = getFacultyCommand.ExecuteReader();
+                    if (faculties.HasRows)
+                    {
+                        while (faculties.Read())
+                        {
+                            e_facultyComboBox.Items.Add(faculties.GetString(0));
+                        }
+                        faculties.Close();
+                    }
 
-            foreach (var t in university.specializations)
+                    foreach (var t in university.courses)
+                    {
+                        e_courseComboBox.Items.Add(t);
+                    }
+
+                    foreach (var t in university.groups)
+                    {
+                        e_groupComboBox.Items.Add(t);
+                    }
+                }
+            }
+            catch (Exception e)
             {
-                e_specializationComboBox.Items.Add(t);
+                MessageBox.Show(e.Message);
+                throw;
             }
-
-            foreach (var t in university.courses)
-            {
-                e_courseComboBox.Items.Add(t);
-            }
-
-            foreach (var t in university.groups)
-            {
-                e_groupComboBox.Items.Add(t);
-            }
-
         }
 
         private void E_editInformationButton_OnClick(object sender, RoutedEventArgs e)

@@ -37,12 +37,15 @@ namespace StudentHub
         {
             string getStudentsQuery =
                 "SELECT StudentName from Student where Course = @Course and GroupId = @GroupId and Specialization = @Specialization and Faculty = @Faculty";
+            string getSubjectsProcedure = "GET_SUBJECTS";
             try
             {
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
                 {
                     connection.Open();
                     SqlCommand getStudentsCommand = new SqlCommand(getStudentsQuery, connection);
+                    SqlCommand getSubjectCommand = new SqlCommand(getSubjectsProcedure, connection);
+                    getSubjectCommand.CommandType = CommandType.StoredProcedure;
                     getStudentsCommand.CommandType = CommandType.Text;
                     SqlParameter courseParameter = new SqlParameter
                     {
@@ -64,10 +67,16 @@ namespace StudentHub
                         ParameterName = "@Faculty",
                         Value = _student.Faculty
                     };
+                    SqlParameter facultyParameterSub = new SqlParameter
+                    {
+                        ParameterName = "@Faculty",
+                        Value = _student.Faculty
+                    };
                     getStudentsCommand.Parameters.Add(courseParameter);
                     getStudentsCommand.Parameters.Add(groupIdParameter);
                     getStudentsCommand.Parameters.Add(specializationParameter);
                     getStudentsCommand.Parameters.Add(facultyParameter);
+                    getSubjectCommand.Parameters.Add(facultyParameterSub);
                     var students = getStudentsCommand.ExecuteReader();
                     if (students.HasRows)
                     {
@@ -82,18 +91,31 @@ namespace StudentHub
                         MessageBox.Show("Data could not be retrieved. You or students may have entered your personal information incorrectly");
                         this.Close();
                     }
+                    var subjects = getSubjectCommand.ExecuteReader();
+                    if (subjects.HasRows)
+                    {
+                        while (subjects.Read())
+                        {
+                            s_subjectsComboBox.Items.Add(subjects.GetString(0));
+                        }
+                        subjects.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data could not be retrieved. You or students may have entered your personal information incorrectly");
+                        this.Close();
+                    }
                 }
-
-                foreach (var t in _university.subjects)
-                {
-                    s_subjectsComboBox.Items.Add(t);
-                }
-
+                
                 foreach (var t in _university.notes)
                 {
                     s_noteComboBox.Items.Add(t);
                 }
-                
+
+                s_studentsComboBox.SelectedIndex = 0;
+                s_subjectsComboBox.SelectedIndex = 0;
+                s_noteComboBox.SelectedIndex = 0;
+
             }
             catch (Exception e)
             {

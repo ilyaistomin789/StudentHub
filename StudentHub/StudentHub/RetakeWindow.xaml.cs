@@ -33,10 +33,56 @@ namespace StudentHub
         {
             InitializeComponent();
             _student = student;
+            InitializeComboBox();
+        }
+
+        private void InitializeComboBox()
+        {
+            string getSubjectsProcedure = "GET_SUBJECTS";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
+                {
+                    connection.Open();
+                    SqlCommand getSubjectCommand = new SqlCommand(getSubjectsProcedure,connection);
+                    getSubjectCommand.CommandType = CommandType.StoredProcedure;
+                    SqlParameter facultyParameter = new SqlParameter
+                    {
+                        ParameterName = "@Faculty",
+                        Value = _student.Faculty
+                    };
+                    getSubjectCommand.Parameters.Add(facultyParameter);
+                    var subjects = getSubjectCommand.ExecuteReader();
+                    if (subjects.HasRows)
+                    {
+                        while (subjects.Read())
+                        {
+                            r_subjectComboBox.Items.Add(subjects.GetString(0));
+                        }
+                        subjects.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data could not be retrieved. You or students may have entered your personal information incorrectly");
+                        this.Close();
+                    }
+                }
+
+                r_subjectComboBox.SelectedIndex = 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void R_sendRequestButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (r_subjectComboBox.Text == String.Empty)
+            {
+                MessageBox.Show("Please, choose the Subject");
+                return;
+            }
             string addRetakeProcedure = "ADD_RETAKE";
             try
             {

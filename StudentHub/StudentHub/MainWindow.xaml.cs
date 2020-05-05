@@ -43,6 +43,7 @@ namespace StudentHub
             }
             studentNameTextBlock.Text = " " + _student.Name;
             GetStudentRatings();
+            GetRetakeAndAdjustment();
         }
 
         private void GetStudentRatings()
@@ -75,6 +76,71 @@ namespace StudentHub
             }
         }
 
+        private void GetRetakeAndAdjustment()
+        {
+            string getRetakeQuery =
+                "SELECT SubjectName,CASE when RetakeStatus = 0 then 'В обработке' when RetakeStatus = 1 then 'Запрос отклонен' when RetakeStatus = 2 then 'Запрос принят' END Status, convert(varchar,RDate,104) [Date of retake] FROM Retake where StudentId = @StudentId";
+            string getAdjustmentQuery = "SELECT SubjectName,CASE when AdjustmentStatus = 0 then 'В обработке' when AdjustmentStatus = 1 then 'Запрос отклонен' when AdjustmentStatus = 2 then 'Запрос принят' END Status, convert(varchar,ADate,104) [Date of adjustment] FROM Adjustment where StudentId = @StudentId";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
+                {
+                    connection.Open();
+                    SqlCommand getAdjustmentCommand = new SqlCommand(getAdjustmentQuery,connection);
+                    SqlCommand getRetakeCommand = new SqlCommand(getRetakeQuery,connection);
+                    getRetakeCommand.CommandType = CommandType.Text;
+                    getAdjustmentCommand.CommandType = CommandType.Text;
+                    SqlParameter rStudentIdParameter = new SqlParameter
+                    {
+                        ParameterName = "@StudentId",
+                        Value = _student.StudentId
+                    };
+                    SqlParameter aStudentIdParameter = new SqlParameter
+                    {
+                        ParameterName = "@StudentId",
+                        Value = _student.StudentId
+                    };
+                    getRetakeCommand.Parameters.Add(rStudentIdParameter);
+                    getAdjustmentCommand.Parameters.Add(aStudentIdParameter);
+                    var hasAdjustment = getAdjustmentCommand.ExecuteReader();
+                    if (hasAdjustment.HasRows)
+                    {
+                        hasAdjustment.Close();
+                        getAdjustmentCommand.ExecuteNonQuery();
+                        SqlDataAdapter adjustmentDataAdapter = new SqlDataAdapter(getAdjustmentCommand);
+                        DataTable dt1 = new DataTable("Adjustment");
+                        adjustmentDataAdapter.Fill(dt1);
+                        dg_Adjustments.ItemsSource = dt1.DefaultView;
+                        adjustmentDataAdapter.Update(dt1);
+                    }
+                    else
+                    {
+                        hasAdjustment.Close();
+                    }
+                    var hasRetakes = getRetakeCommand.ExecuteReader();
+                    if (hasRetakes.HasRows)
+                    {
+                        hasRetakes.Close();
+                        getRetakeCommand.ExecuteNonQuery();
+                        SqlDataAdapter retakeDataAdapter = new SqlDataAdapter(getRetakeCommand);
+                        DataTable dt2 = new DataTable("Retake");
+                        retakeDataAdapter.Fill(dt2);
+                        dg_Retakes.ItemsSource = dt2.DefaultView;
+                        retakeDataAdapter.Update(dt2);
+                    }
+                    else
+                    {
+                        hasRetakes.Close();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
         private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -94,7 +160,7 @@ namespace StudentHub
 
         private void RetakeButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _window = new RetakeWindow();
+            _window = new RetakeWindow(_student);
             _window.Show();
         }
 

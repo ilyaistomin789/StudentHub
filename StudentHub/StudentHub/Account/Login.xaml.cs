@@ -115,14 +115,12 @@ namespace StudentHub.Account
                     {
                         while (users.Read())
                         {
-                            if (logIn_UserName.Text == users.GetString(1) &&
-                                logIn_Password.Password == users.GetString(2))
-                            {
-                                userExist = true;
-                                currentUser.UserId = users.GetInt32(0);
-                                currentUser.UserName = users.GetString(1);
-                                currentUser.Password = users.GetString(2);
-                            }
+                            if (logIn_UserName.Text != users.GetString(1) ||
+                                logIn_Password.Password != users.GetString(2)) continue;
+                            userExist = true;
+                            currentUser.UserId = users.GetInt32(0);
+                            currentUser.UserName = users.GetString(1);
+                            currentUser.Password = users.GetString(2);
                         }
                         users.Close();
                     }

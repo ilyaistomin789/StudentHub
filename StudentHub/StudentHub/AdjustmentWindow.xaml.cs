@@ -34,9 +34,45 @@ namespace StudentHub
         {
             InitializeComponent();
             _student = student;
-            foreach (var t in university.subjects)
+            InitializeComboBox();
+        }
+        private void InitializeComboBox()
+        {
+            string getSubjectsProcedure = "GET_SUBJECTS";
+            try
             {
-                a_subjectComboBox.Items.Add(t);
+                using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
+                {
+                    connection.Open();
+                    SqlCommand getSubjectCommand = new SqlCommand(getSubjectsProcedure, connection);
+                    getSubjectCommand.CommandType = CommandType.StoredProcedure;
+                    SqlParameter facultyParameter = new SqlParameter
+                    {
+                        ParameterName = "@Faculty",
+                        Value = _student.Faculty
+                    };
+                    getSubjectCommand.Parameters.Add(facultyParameter);
+                    var subjects = getSubjectCommand.ExecuteReader();
+                    if (subjects.HasRows)
+                    {
+                        while (subjects.Read())
+                        {
+                            a_subjectComboBox.Items.Add(subjects.GetString(0));
+                        }
+                        subjects.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data could not be retrieved. You or students may have entered your personal information incorrectly");
+                        this.Close();
+                    }
+                }
+
+                a_subjectComboBox.SelectedIndex = 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 

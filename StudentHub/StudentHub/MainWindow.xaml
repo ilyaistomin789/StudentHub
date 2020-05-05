@@ -81,6 +81,14 @@
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
                       CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
             </DataGrid>
+            <DataGrid x:Name="dg_Adjustments" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
+                      BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+            </DataGrid>
+            <DataGrid x:Name="dg_Retakes" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
+                      BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+            </DataGrid>
         </StackPanel>
     </Grid> 
 </Window>
