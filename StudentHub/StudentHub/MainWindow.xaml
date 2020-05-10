@@ -18,7 +18,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="#3BAA36"/>
+        <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF7EE01B" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="1.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
         <StackPanel>
             <TextBlock Text="Student Hub" FontSize="35" Margin="5" TextAlignment="Center"/>
             <StackPanel>

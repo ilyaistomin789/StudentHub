@@ -79,6 +79,18 @@
     <Compile Include="AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdjustmentWorkWindow.xaml.cs">
+      <DependentUpon>AdjustmentWorkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\BadStudentsWindow.xaml.cs">
+      <DependentUpon>BadStudentsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GapsWorkWindow.xaml.cs">
+      <DependentUpon>GapsWorkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RetakeWorkWindow.xaml.cs">
+      <DependentUpon>RetakeWorkWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWindow.xaml.cs">
       <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
@@ -112,6 +124,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdjustmentWorkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\BadStudentsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\GapsWorkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\RetakeWorkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,7 +228,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Sources\Window\preferences-desktop-user.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\Login\studentImage.png" />
   </ItemGroup>

@@ -52,3 +52,9 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Pu
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\PutGapsWindow.baml
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\ShowInformationWindow.g.cs
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\ShowInformationWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\AdjustmentWorkWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\AdjustmentWorkWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\RetakeWorkWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\RetakeWorkWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\GapsWorkWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\GapsWorkWindow.baml

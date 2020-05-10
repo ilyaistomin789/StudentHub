@@ -13,7 +13,7 @@ namespace StudentHub.DataBase
     public static class SqlDataBaseConnection
     {
             private const string UserConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=true;User ID=Default_User;Password=password";
-            private const string AdminConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=False;User ID=Admin_User;Password=password";
+            private const string AdminConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=true;User ID=Admin_User;Password=password";
             private const string DefaultConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=StudentHub; Integrated Security=True";
 
             public static string data = DefaultConnectionString;
