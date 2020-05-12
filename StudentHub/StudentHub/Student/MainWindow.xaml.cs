@@ -62,12 +62,23 @@ namespace StudentHub
                         Value = _student.StudentId
                     };
                     getRatingsCommand.Parameters.Add(studentIdParameter);
-                    getRatingsCommand.ExecuteNonQuery();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(getRatingsCommand);
-                    DataTable dt = new DataTable("Progress");
-                    dataAdapter.Fill(dt);
-                    dg_Progress.ItemsSource = dt.DefaultView;
-                    dataAdapter.Update(dt);
+                    var hasProgress = getRatingsCommand.ExecuteReader();
+                    if (hasProgress.HasRows)
+                    {
+                        hasProgress.Close();
+                        getRatingsCommand.ExecuteNonQuery();
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(getRatingsCommand);
+                        DataTable dt = new DataTable("Progress");
+                        dataAdapter.Fill(dt);
+                        dg_Progress.ItemsSource = dt.DefaultView;
+                        dataAdapter.Update(dt);
+                    }
+                    else
+                    {
+                        hasProgress.Close();
+                        m_ProgressTextBlock.Visibility = Visibility.Collapsed;
+                        dg_Progress.Visibility = Visibility.Collapsed;
+                    }
                 }
             }
             catch (Exception e)
@@ -116,6 +127,8 @@ namespace StudentHub
                     else
                     {
                         hasAdjustment.Close();
+                        m_AdjustmentTextBlock.Visibility = Visibility.Collapsed;
+                        dg_Adjustments.Visibility = Visibility.Collapsed;
                     }
                     var hasRetakes = getRetakeCommand.ExecuteReader();
                     if (hasRetakes.HasRows)
@@ -131,6 +144,8 @@ namespace StudentHub
                     else
                     {
                         hasRetakes.Close();
+                        m_RetakeTextBlock.Visibility = Visibility.Collapsed;
+                        dg_Retakes.Visibility = Visibility.Collapsed;
                     }
                 }
             }
@@ -155,7 +170,6 @@ namespace StudentHub
         private void AdjustmentButton_OnClick(object sender, RoutedEventArgs e)
         {
             _window = new AdjustmentWindow(_student);
-            _window.Show();
         }
 
         private void RetakeButton_OnClick(object sender, RoutedEventArgs e)

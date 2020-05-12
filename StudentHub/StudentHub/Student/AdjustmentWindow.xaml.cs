@@ -60,11 +60,13 @@ namespace StudentHub
                             a_subjectComboBox.Items.Add(subjects.GetString(0));
                         }
                         subjects.Close();
+                        this.Show();
                     }
                     else
                     {
-                        MessageBox.Show("Data could not be retrieved. You or students may have entered your personal information incorrectly");
+                        MessageBox.Show("Data could not be retrieved. You may have entered your personal information incorrectly");
                         this.Close();
+                        return;
                     }
                 }
 
@@ -76,14 +78,61 @@ namespace StudentHub
             }
         }
 
+        private bool CheckAdjustments(SqlConnection connection)
+        {
+            string checkAdjustmentsQuery =
+                "SELECT StudentId,SubjectName,ADate FROM Adjustment where StudentId = @StudentId and SubjectName = @SubjectName and ADate = @ADate";
+            SqlCommand checkAdjustmentsCommand = new SqlCommand(checkAdjustmentsQuery, connection);
+            checkAdjustmentsCommand.CommandType = CommandType.Text;
+            SqlParameter studentIdParameter = new SqlParameter
+            {
+                ParameterName = "@StudentId",
+                Value = _student.StudentId
+            };
+            SqlParameter subjectNameParameter = new SqlParameter
+            {
+                ParameterName = "@SubjectName",
+                Value = a_subjectComboBox.Text
+            };
+            SqlParameter aDateParameter = new SqlParameter
+            {
+                ParameterName = "@ADate",
+                Value = a_adjustmentDateCalendar.SelectedDate
+            };
+            checkAdjustmentsCommand.Parameters.Add(studentIdParameter);
+            checkAdjustmentsCommand.Parameters.Add(subjectNameParameter);
+            checkAdjustmentsCommand.Parameters.Add(aDateParameter);
+            var check = checkAdjustmentsCommand.ExecuteReader();
+            if (check.HasRows)
+            {
+                check.Close();
+                return true;
+            }
+            else
+            {
+                check.Close();
+                return false;
+            }
+        }
+
         private void A_sendRequestButton_OnClick(object sender, RoutedEventArgs e)
         {
             string addAdjustmentProcedure = "ADD_ADJUSTMENT";
+            if (a_subjectComboBox.Text == String.Empty)
+            {
+                MessageBox.Show("Please, choose the Subject");
+                return;
+            }
             try
             {
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
                 {
                     connection.Open();
+                    if (CheckAdjustments(connection))
+                    {
+                        MessageBox.Show("This request is exists");
+                        return;
+                    }
                     SqlCommand addAdjustmentCommand = new SqlCommand(addAdjustmentProcedure, connection);
                     addAdjustmentCommand.CommandType = CommandType.StoredProcedure;
                     SqlParameter studentIdParameter = new SqlParameter
@@ -104,8 +153,9 @@ namespace StudentHub
                     addAdjustmentCommand.Parameters.Add(studentIdParameter);
                     addAdjustmentCommand.Parameters.Add(subjectNameParameter);
                     addAdjustmentCommand.Parameters.Add(aDateParameter);
-                    var done = addAdjustmentCommand.ExecuteNonQuery();
+                    addAdjustmentCommand.ExecuteNonQuery();
                     MessageBox.Show("Done");
+
                 }
             }
             catch (Exception exception)

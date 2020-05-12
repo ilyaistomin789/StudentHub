@@ -75,6 +75,42 @@ namespace StudentHub
                 MessageBox.Show(e.Message);
             }
         }
+        private bool CheckRetakes(SqlConnection connection)
+        {
+            string checkRetakesQuery =
+                "SELECT StudentId,SubjectName,RDate FROM Retake where StudentId = @StudentId and SubjectName = @SubjectName and RDate = @RDate";
+            SqlCommand checkRetakesCommand = new SqlCommand(checkRetakesQuery, connection);
+            checkRetakesCommand.CommandType = CommandType.Text;
+            SqlParameter studentIdParameter = new SqlParameter
+            {
+                ParameterName = "@StudentId",
+                Value = _student.StudentId
+            };
+            SqlParameter subjectNameParameter = new SqlParameter
+            {
+                ParameterName = "@SubjectName",
+                Value = r_subjectComboBox.Text
+            };
+            SqlParameter rDateParameter = new SqlParameter
+            {
+                ParameterName = "@RDate",
+                Value = r_adjustmentDateCalendar.SelectedDate
+            };
+            checkRetakesCommand.Parameters.Add(studentIdParameter);
+            checkRetakesCommand.Parameters.Add(subjectNameParameter);
+            checkRetakesCommand.Parameters.Add(rDateParameter);
+            var check = checkRetakesCommand.ExecuteReader();
+            if (check.HasRows)
+            {
+                check.Close();
+                return true;
+            }
+            else
+            {
+                check.Close();
+                return false;
+            }
+        }
 
         private void R_sendRequestButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -89,6 +125,11 @@ namespace StudentHub
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
                 {
                     connection.Open();
+                    if (CheckRetakes(connection))
+                    {
+                        MessageBox.Show("This request is exists");
+                        return;
+                    }
                     SqlCommand addRetakeCommand = new SqlCommand(addRetakeProcedure, connection);
                     addRetakeCommand.CommandType = CommandType.StoredProcedure;
                     SqlParameter studentIdParameter = new SqlParameter

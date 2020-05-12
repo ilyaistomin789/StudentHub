@@ -12,6 +12,9 @@
     <v:String x:Key="app_ExitButton">Exit</v:String>
     <v:String x:Key="signIn_GoToLogin">Go to Login</v:String>
     <v:String x:Key="m_LogOut">Log out of account</v:String>
+    <v:String x:Key="m_Progress">Progress</v:String>
+    <v:String x:Key="m_Adjustment">Adjustment</v:String>
+    <v:String x:Key="m_Retake">Retake</v:String>
     <v:String x:Key="m_RequestToAdjustment">Request to adjustment</v:String>
     <v:String x:Key="m_RequestToRetake">Request to retake</v:String>
     <v:String x:Key="m_PutGapsBySubjects">Put gaps by subjects</v:String>
@@ -39,7 +42,10 @@
     <v:String x:Key="admin_Accept">Accept</v:String>
     <v:String x:Key="admin_Decline">Decline</v:String>
     <v:String x:Key="admin_LotOfPasses">Student with passes more 30</v:String>
+    <v:String x:Key="admin_SearchStudent">Search the student</v:String>
     <v:String x:Key="admin_BadStudents">Bad Students</v:String>
+    <v:String x:Key="admin_ViewStudentProgress">View Student Progress</v:String>
+    <v:String x:Key="admin_SearchStudentTextBlock">Please, enter the student name</v:String>
     <v:String x:Key="app_Subject">Subject</v:String>
     <v:String x:Key="app_StudentName">Student</v:String>
     <v:String x:Key="app_Note">Note</v:String>

@@ -9,14 +9,8 @@ namespace StudentHub.University
     public class UniversityEssence
     {
         private static UniversityEssence instance;
-        public string[] faculties = new[] { "undefined", "ХТиТ", "ЛХФ", "ИЭФ", "ТТЛП", "ТОВ", "ИТ", "ИДиП" };
-        public string[] specializations = new[] { "undefined", "ИСиТ", "ПОИТ", "ПОИБМС", "ДЭиВИ", "ИД", "ПОиСОИ", "КиПИИКМ", "МиАХПИПСМ", "МиАХПиПСМ", "ИЛХ", "ЭиУНП", "БУаИА" };
         public int[] courses = new int[5];
         public int[] groups = new int[10];
-
-        public string[] subjects = new[]
-            {"СУБД", "ООТПиСП", "СТПвI", "КГиГ", "БД", "ИНФ", "ОАиП", "ПЗ", "ПСП", "МСОИ", "ПИС", "ПМАПЛ"};
-
         public int[] notes = new int[10];
         public int[] countOfGaps = new int[30];
 

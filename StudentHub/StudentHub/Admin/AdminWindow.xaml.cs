@@ -22,10 +22,12 @@ namespace StudentHub
     public partial class AdminWindow : Window
     {
         private Window _window;
-        public AdminWindow()
+        public AdminWindow(string adminName)
         {
             InitializeComponent();
+            adminNameTextBlock.Text = ' ' +  adminName;
         }
+
 
         private void AdminWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
         private void AdjustmentWorkButton_OnClick(object sender, RoutedEventArgs e)
@@ -53,7 +55,8 @@ namespace StudentHub
 
         private void StudentProgressButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _window = new SearchStudentWindow();
+            _window.Show();
         }
 
         private void ReportButton_OnClick(object sender, RoutedEventArgs e)
@@ -73,10 +76,7 @@ namespace StudentHub
             this.Close();
         }
 
-        private void ExitButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void ExitButton_OnClick(object sender, RoutedEventArgs e) => this.Close();
 
 
     }

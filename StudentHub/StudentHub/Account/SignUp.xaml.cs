@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using StudentHub.DataBase;
+using StudentHub.University;
 
 
 namespace StudentHub.Account
@@ -102,7 +103,7 @@ namespace StudentHub.Account
                     SqlParameter passwordParameter = new SqlParameter
                     {
                         ParameterName = "@UserPassword",
-                        Value = reg_Password.Password
+                        Value = User.GetHashPassword(reg_Password.Password)
                     };
                     command.Parameters.Add(userNameParameter);
                     command.Parameters.Add(passwordParameter);

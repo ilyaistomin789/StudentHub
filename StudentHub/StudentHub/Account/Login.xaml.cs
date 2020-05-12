@@ -24,7 +24,8 @@ namespace StudentHub.Account
     public partial class Login : Window
     {
         private Window _window;
-        private Student student = new Student();
+        private readonly Student _student = new Student();
+        private AdminAccount _admin = new AdminAccount();
         public Login()
         {
 
@@ -72,17 +73,42 @@ namespace StudentHub.Account
             {
                 while (currentStudent.Read())
                 {
-                    student.StudentId = currentStudent.GetInt32(0);
-                    student.UserId = currentStudent.GetInt32(1);
-                    student.Name = currentStudent.GetString(2);
-                    student.StudentStatus = currentStudent.GetString(3);
-                    student.Course = currentStudent.GetInt32(4);
-                    student.Group = currentStudent.GetInt32(5);
-                    student.Specialization = currentStudent.GetString(6);
-                    student.Faculty = currentStudent.GetString(7);
-                    student.Birthday = currentStudent.GetDateTime(8).ToString("d");
+                    _student.StudentId = currentStudent.GetInt32(0);
+                    _student.UserId = currentStudent.GetInt32(1);
+                    _student.Name = currentStudent.GetString(2);
+                    _student.StudentStatus = currentStudent.GetString(3);
+                    _student.Course = currentStudent.GetInt32(4);
+                    _student.Group = currentStudent.GetInt32(5);
+                    _student.Specialization = currentStudent.GetString(6);
+                    _student.Faculty = currentStudent.GetString(7);
+                    _student.Birthday = currentStudent.GetDateTime(8).ToString("d");
                 }
                 currentStudent.Close();
+            }
+
+        }
+
+        private void SetAdminFields(int userId, SqlConnection connection)
+        {
+            string getAdminFieldsQuery = "SELECT * FROM admin WHERE UserId = @UserId";
+            SqlCommand getAdminFieldsCommand = new SqlCommand(getAdminFieldsQuery, connection);
+            getAdminFieldsCommand.CommandType = CommandType.Text;
+            SqlParameter userIdParameter = new SqlParameter
+            {
+                ParameterName = "@UserId",
+                Value = userId
+            };
+            getAdminFieldsCommand.Parameters.Add(userIdParameter);
+            var currentAdmin = getAdminFieldsCommand.ExecuteReader();
+            if (currentAdmin.HasRows)
+            {
+                while (currentAdmin.Read())
+                {
+                    _admin.AdminId = currentAdmin.GetInt32(0);
+                    _admin.AdminName = currentAdmin.GetString(1);
+                    _admin.UserId = currentAdmin.GetInt32(2);
+                }
+                currentAdmin.Close();
             }
 
         }
@@ -116,7 +142,7 @@ namespace StudentHub.Account
                         while (users.Read())
                         {
                             if (logIn_UserName.Text != users.GetString(1) ||
-                                logIn_Password.Password != users.GetString(2)) continue;
+                                User.GetHashPassword(logIn_Password.Password) != users.GetString(2)) continue;
                             userExist = true;
                             currentUser.UserId = users.GetInt32(0);
                             currentUser.UserName = users.GetString(1);
@@ -130,7 +156,8 @@ namespace StudentHub.Account
                         if (IsAdmin(Convert.ToInt32(currentUser.UserId),connection))
                         {
                             SqlDataBaseConnection.ApplyAdminPrivileges();
-                            _window = new AdminWindow();
+                            SetAdminFields(Convert.ToInt32(currentUser.UserId),connection);
+                            _window = new AdminWindow(_admin.AdminName);
                             _window.Show();
                             this.Close();
                         }
@@ -138,7 +165,7 @@ namespace StudentHub.Account
                         {
                             SqlDataBaseConnection.ApplyUserPrivileges();
                             SetStudentFields(Convert.ToInt32(currentUser.UserId),connection);
-                            _window = new MainWindow(student);
+                            _window = new MainWindow(_student);
                             _window.Show();
                             this.Close();
                         }
