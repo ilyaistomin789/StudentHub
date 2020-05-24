@@ -64,3 +64,9 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Ad
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\ViewProgressWindow.g.cs
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\ViewProgressWindow.baml
 D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\SearchStudentWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\EmailGenerationWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\EmailGenerationWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\ConfirmGenerateWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\ConfirmGenerateWindow.baml
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\SearchQueryWindow.g.cs
+D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\obj\Debug\Admin\SearchQueryWindow.baml

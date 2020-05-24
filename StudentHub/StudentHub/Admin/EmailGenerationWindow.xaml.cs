@@ -14,21 +14,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using StudentHub.DataBase;
+using StudentHub.University;
 
 namespace StudentHub.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для ViewProgressWindow.xaml
+    /// Логика взаимодействия для EmailGenerationWindow.xaml
     /// </summary>
-    public partial class ViewProgressWindow : Window
+    public partial class EmailGenerationWindow : Window
     {
-        private string _studentName;
-        public ViewProgressWindow()
-        {
-            InitializeComponent();
-        }
-
-        public ViewProgressWindow(string studentName)
+        private readonly string _studentName;
+        private Window _window;
+        private Student _student = new Student();
+        public EmailGenerationWindow(string studentName)
         {
             InitializeComponent();
             _studentName = studentName;
@@ -37,7 +35,7 @@ namespace StudentHub.Admin
 
         private void InitializeDataGrid()
         {
-            string searchStudentProcedure = "SEARCH_STUDENT";
+            string searchStudentProcedure = "SEARCH_STUDENT_FIELDS";
             try
             {
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
@@ -65,7 +63,7 @@ namespace StudentHub.Admin
                     }
                     else
                     {
-                        MessageBox.Show("Error when searching for a student. May be this student has no grades.");
+                        MessageBox.Show("Error when searching for a student");
                     }
                 }
             }
@@ -73,6 +71,16 @@ namespace StudentHub.Admin
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        private void GenerateButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _student.Name = ((DataRowView)dg_Students.SelectedItems[0]).Row["Student"].ToString();
+            _student.Course = Convert.ToInt32(((DataRowView) dg_Students.SelectedItems[0]).Row["Course"].ToString());
+            _student.Group = Convert.ToInt32(((DataRowView) dg_Students.SelectedItems[0]).Row["Group"].ToString());
+            _student.Faculty = ((DataRowView) dg_Students.SelectedItems[0]).Row["Faculty"].ToString();
+            _window = new ConfirmGenerateWindow(_student);
+            _window.Show();
         }
     }
 }

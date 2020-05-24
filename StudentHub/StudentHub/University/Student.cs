@@ -17,5 +17,6 @@ namespace StudentHub.University
         public int Course { get; set; }
         public int Group { get; set; }
         public string Faculty { get; set; }
+        public string Email { get; set; }
     }
 }

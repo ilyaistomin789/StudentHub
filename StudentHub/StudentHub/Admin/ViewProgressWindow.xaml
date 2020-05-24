@@ -12,8 +12,7 @@
             <TextBlock FontSize="30" TextAlignment="Center" Text="{DynamicResource admin_ViewStudentProgress}"/>
             <DataGrid x:Name="dg_Students" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="18" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
-            </DataGrid>
+                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True"/>
         </StackPanel>
     </Grid>
 </Window>

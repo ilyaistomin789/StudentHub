@@ -21,7 +21,7 @@
         <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2" >
             <Border.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="#FF7EE01B" Offset="0.0"/>
+                    <GradientStop Color="#FFEAD824" Offset="0.0"/>
                     <GradientStop Color="White" Offset="1.5"/>
                 </LinearGradientBrush>
             </Border.Background>
@@ -87,17 +87,17 @@
             <TextBlock x:Name="m_ProgressTextBlock" Text="{DynamicResource m_Progress}" FontSize="20" HorizontalAlignment="Center"/>
             <DataGrid x:Name="dg_Progress" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True">
             </DataGrid>
             <TextBlock x:Name="m_AdjustmentTextBlock" Text="{DynamicResource m_Adjustment}" FontSize="20" HorizontalAlignment="Center"/>
             <DataGrid x:Name="dg_Adjustments" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True">
             </DataGrid>
             <TextBlock x:Name="m_RetakeTextBlock" Text="{DynamicResource m_Retake}" FontSize="20" HorizontalAlignment="Center"/>
             <DataGrid x:Name="dg_Retakes" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True">
             </DataGrid>
         </StackPanel>
     </Grid> 

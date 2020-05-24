@@ -38,6 +38,10 @@
                 <TextBlock Text="{DynamicResource app_StudentBirthday}" Width="120"/>
                 <TextBlock x:Name="s_birthdayTextBlock" Width="200"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                <TextBlock Text="{DynamicResource acc_Email}" Width="120"/>
+                <TextBlock x:Name="s_emailTextBlock" Width="200"/>
             </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using StudentHub.DataBase;
 using StudentHub.University;
 
@@ -25,10 +15,9 @@ namespace StudentHub.Account
     {
         private Window _window;
         private readonly Student _student = new Student();
-        private AdminAccount _admin = new AdminAccount();
+        private readonly AdminAccount _admin = new AdminAccount();
         public Login()
         {
-
             InitializeComponent();
         }
 
@@ -82,6 +71,7 @@ namespace StudentHub.Account
                     _student.Specialization = currentStudent.GetString(6);
                     _student.Faculty = currentStudent.GetString(7);
                     _student.Birthday = currentStudent.GetDateTime(8).ToString("d");
+                    _student.Email = currentStudent.GetString(9);
                 }
                 currentStudent.Close();
             }

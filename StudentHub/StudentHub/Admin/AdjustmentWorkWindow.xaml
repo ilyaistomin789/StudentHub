@@ -16,7 +16,7 @@
             <TextBlock FontSize="30" TextAlignment="Center" Text="{DynamicResource admin_AdjustmentWork}"/>
             <DataGrid x:Name="dg_Adjustments" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="18" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
+                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True">
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">

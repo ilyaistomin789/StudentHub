@@ -25,7 +25,7 @@ namespace StudentHub
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Student _student = new Student();
+        private readonly Student _student = new Student();
         private Window _window;
         public MainWindow()
         {
@@ -156,10 +156,7 @@ namespace StudentHub
 
         }
 
-        private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
+        private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
         private void EditInformationButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -167,10 +164,7 @@ namespace StudentHub
             _window.Show();
         }
 
-        private void AdjustmentButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            _window = new AdjustmentWindow(_student);
-        }
+        private void AdjustmentButton_OnClick(object sender, RoutedEventArgs e) => _window = new AdjustmentWindow(_student);
 
         private void RetakeButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -178,10 +172,7 @@ namespace StudentHub
             _window.Show();
         }
 
-        private void ExitButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void ExitButton_OnClick(object sender, RoutedEventArgs e) => this.Close();
 
         private void LogOutButton_OnClick(object sender, RoutedEventArgs e)
         {

@@ -50,12 +50,13 @@ namespace StudentHub
 
         private void SearchQueryButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _window = new SearchQueryWindow();
+            _window.Show();
         }
 
         private void StudentProgressButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _window = new SearchStudentWindow();
+            _window = new SearchStudentWindow(1);
             _window.Show();
         }
 
@@ -66,7 +67,8 @@ namespace StudentHub
 
         private void EmailButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _window = new SearchStudentWindow(2);
+            _window.Show();
         }
 
         private void LogOutButton_OnClick(object sender, RoutedEventArgs e)

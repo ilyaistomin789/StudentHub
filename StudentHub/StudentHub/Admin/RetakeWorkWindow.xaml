@@ -16,8 +16,7 @@
             <TextBlock FontSize="30" TextAlignment="Center" Text="{DynamicResource admin_RetakeWork}"/>
             <DataGrid x:Name="dg_Retakes" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="18" 
                       BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
-            </DataGrid>
+                      CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="acceptButton" Content="{DynamicResource admin_Accept}" Background="#FF33EA33" Width="100" Height="40" Margin="5" Click="AcceptButton_OnClick"/>

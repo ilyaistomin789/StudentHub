@@ -73,6 +73,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\ConfirmGenerateWindow.xaml.cs">
+      <DependentUpon>ConfirmGenerateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EmailGenerationWindow.xaml.cs">
+      <DependentUpon>EmailGenerationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SearchQueryWindow.xaml.cs">
+      <DependentUpon>SearchQueryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\SearchStudentWindow.xaml.cs">
       <DependentUpon>SearchStudentWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +132,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Account\SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\ConfirmGenerateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\EmailGenerationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\SearchQueryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,8 +206,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataBase\SqlDataBaseConnection.cs" />
-    <Compile Include="Logger\FileLog.cs" />
-    <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Student\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

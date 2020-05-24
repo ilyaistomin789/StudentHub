@@ -20,14 +20,25 @@ namespace StudentHub.Admin
     public partial class SearchStudentWindow : Window
     {
         private Window _window;
-        public SearchStudentWindow()
+        private int _index;
+        public SearchStudentWindow(int index)
         {
             InitializeComponent();
+            _index = index;
         }
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _window = new ViewProgressWindow(studentNameTextBox.Text);
+            if (_index == 1)
+            {
+                _window = new ViewProgressWindow(studentNameTextBox.Text);
+            }
+
+            if (_index == 2)
+            {
+                _window = new EmailGenerationWindow(studentNameTextBox.Text);
+            }
+
         }
     }
 }

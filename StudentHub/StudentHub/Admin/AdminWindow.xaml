@@ -91,10 +91,6 @@
                 <TextBlock Text="{DynamicResource m_Welcome}" FontSize="30"/>
                 <TextBlock x:Name="adminNameTextBlock" FontSize="30"/>
             </StackPanel>
-            <DataGrid x:Name="dg_" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="20" 
-                      BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
-                      CanUserResizeRows="False" Width="640" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="210" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}">
-            </DataGrid>
         </StackPanel>
     </Grid>
 </Window>
