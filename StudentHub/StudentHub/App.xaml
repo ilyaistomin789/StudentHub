@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Decoration/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Sources/Languages/lang.xaml"/>
                 <ResourceDictionary Source="Decoration/ElementProperty.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.passwordbox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

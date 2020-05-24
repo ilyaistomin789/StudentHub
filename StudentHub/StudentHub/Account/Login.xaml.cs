@@ -119,6 +119,12 @@ namespace StudentHub.Account
                 MessageBox.Show("Please, enter the Password");
                 return;
             }
+
+            if (logIn_Password.Password.Length < 6)
+            {
+                MessageBox.Show("Allowed password length: 6 characters");
+                return;
+            }
             try
             {
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))

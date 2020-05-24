@@ -72,6 +72,11 @@ namespace StudentHub.Account
                 return;
             }
 
+            if (reg_Password.Password.Length < 6)
+            {
+                MessageBox.Show("Allowed password length: 6 characters");
+                return;
+            }
             if (reg_PasswordConfirm.Password == String.Empty)
             {
                 MessageBox.Show("Enter the Confirm password");
