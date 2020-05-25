@@ -26,7 +26,7 @@
                 <TextBlock Text="{DynamicResource p_CountOfGaps}" Width="120"/>
                 <ComboBox x:Name="p_gapsComboBox" Width="200"/>
             </StackPanel>
-            <Button x:Name="p_saveButton" Content="{DynamicResource app_Save}" BorderThickness="6" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="P_saveButton_OnClick"/>
+            <Button x:Name="p_saveButton" Content="{DynamicResource app_Save}" Style="{StaticResource MainButtons}" BorderThickness="6" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="P_saveButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

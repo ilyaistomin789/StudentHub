@@ -22,7 +22,7 @@
                 <TextBlock Text="{DynamicResource m_RequestToRetake}" HorizontalAlignment="Center"/>
                 <Calendar x:Name="r_adjustmentDateCalendar" Language="en-US"/>
             </StackPanel>
-            <Button x:Name="r_sendRequestButton" Content="{DynamicResource app_SendRequest}" BorderThickness="6" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="R_sendRequestButton_OnClick"/>
+            <Button x:Name="r_sendRequestButton" Content="{DynamicResource app_SendRequest}" Style="{StaticResource MainButtons}" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="R_sendRequestButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

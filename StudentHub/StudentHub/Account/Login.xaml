@@ -94,9 +94,9 @@
                         Background="White"
                         Opacity="0.5"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,20,0,0">
-                    <Button x:Name="logInButton" Width="100" Height="40" Content="{StaticResource acc_LogIn}" Margin="0,0,0,15" Click="LogInButton_OnClick"/>
-                    <Button x:Name="signUpButton" Width="100" Height="40" Content="{StaticResource acc_Registration}" Click="SignUpButton_OnClick"/>
-                    <Button  x:Name="exitButton" Width="100" Height="40" Content="{StaticResource app_ExitButton}" Margin="0,15,0,0" Click="ExitButton_OnClick"/>
+                    <Button x:Name="logInButton" Width="100" Height="40" Style="{StaticResource MainButtons}" Content="{StaticResource acc_LogIn}" Margin="0,0,0,15" Click="LogInButton_OnClick"/>
+                    <Button x:Name="signUpButton" Width="100" Height="40" Style="{StaticResource MainButtons}" Content="{StaticResource acc_Registration}" Click="SignUpButton_OnClick"/>
+                    <Button  x:Name="exitButton" Width="100" Height="40" Style="{StaticResource MainButtons}" Content="{StaticResource app_ExitButton}" Margin="0,15,0,0" Click="ExitButton_OnClick"/>
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Row="1" 

@@ -21,7 +21,7 @@
                       ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" HorizontalAlignment="Center" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="LotOfStudentGapsButton" Content="{DynamicResource admin_LotOfPasses}" Background="#FFEAD133" Width="220" Height="45" Margin="5" Click="LotOfStudentGapsButton_OnClick"/>
+            <Button x:Name="LotOfStudentGapsButton" Content="{DynamicResource admin_LotOfPasses}" Style="{StaticResource MainButtons}" Background="#FFEAD133" Width="220" Height="45" Margin="5" Click="LotOfStudentGapsButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

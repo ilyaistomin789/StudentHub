@@ -57,6 +57,7 @@ namespace StudentHub.Admin
         {
             string studentName = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Student"].ToString();
             string subjectName = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Subject"].ToString();
+            string date = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Date"].ToString();
             string setAcceptProcedure = "ADMIN_ACCEPT_ADJUSTMENT";
             try
             {
@@ -75,8 +76,14 @@ namespace StudentHub.Admin
                         ParameterName = "@SubjectName",
                         Value = subjectName
                     };
+                    SqlParameter dateParameter = new SqlParameter
+                    {
+                        ParameterName = "@ADate",
+                        Value = date
+                    };
                     setAcceptCommand.Parameters.Add(studentParameter);
                     setAcceptCommand.Parameters.Add(subjectParameter);
+                    setAcceptCommand.Parameters.Add(dateParameter);
                     setAcceptCommand.ExecuteNonQuery();
                     MessageBox.Show("Done");
                     this.Close();
@@ -95,6 +102,7 @@ namespace StudentHub.Admin
         {
             string studentName = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Student"].ToString();
             string subjectName = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Subject"].ToString();
+            string date = ((DataRowView)dg_Adjustments.SelectedItems[0]).Row["Date"].ToString();
             string setDeclineProcedure = "ADMIN_DECLINE_ADJUSTMENT";
             try
             {
@@ -113,8 +121,14 @@ namespace StudentHub.Admin
                         ParameterName = "@SubjectName",
                         Value = subjectName
                     };
+                    SqlParameter dateParameter = new SqlParameter
+                    {
+                        ParameterName = "@ADate",
+                        Value = date
+                    };
                     setDeclineCommand.Parameters.Add(studentParameter);
                     setDeclineCommand.Parameters.Add(subjectParameter);
+                    setDeclineCommand.Parameters.Add(dateParameter);
                     setDeclineCommand.ExecuteNonQuery();
                     MessageBox.Show("Done");
                     this.Close();

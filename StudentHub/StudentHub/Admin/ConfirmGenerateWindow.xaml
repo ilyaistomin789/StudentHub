@@ -25,7 +25,7 @@
         </StackPanel>
             </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="generateButton" Content="{DynamicResource app_Generate}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="GenerateButton_OnClick"/>
+            <Button x:Name="generateButton" Content="{DynamicResource app_Generate}" Style="{StaticResource MainButtons}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="GenerateButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

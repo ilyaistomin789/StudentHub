@@ -55,6 +55,7 @@ namespace StudentHub.Admin
         {
             string studentName = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Student"].ToString();
             string subjectName = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Subject"].ToString();
+            string date = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Date"].ToString();
             string setAcceptProcedure = "ADMIN_ACCEPT_RETAKE";
             try
             {
@@ -73,6 +74,12 @@ namespace StudentHub.Admin
                         ParameterName = "@SubjectName",
                         Value = subjectName
                     };
+                    SqlParameter dateParameter = new SqlParameter
+                    {
+                        ParameterName = "@RDate",
+                        Value = date
+                    };
+                    setAcceptCommand.Parameters.Add(dateParameter);
                     setAcceptCommand.Parameters.Add(studentParameter);
                     setAcceptCommand.Parameters.Add(subjectParameter);
                     setAcceptCommand.ExecuteNonQuery();
@@ -93,6 +100,7 @@ namespace StudentHub.Admin
         {
             string studentName = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Student"].ToString();
             string subjectName = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Subject"].ToString();
+            string date = ((DataRowView)dg_Retakes.SelectedItems[0]).Row["Date"].ToString();
             string setDeclineProcedure = "ADMIN_DECLINE_RETAKE";
             try
             {
@@ -111,6 +119,12 @@ namespace StudentHub.Admin
                         ParameterName = "@SubjectName",
                         Value = subjectName
                     };
+                    SqlParameter dateParameter = new SqlParameter
+                    {
+                        ParameterName = "@RDate",
+                        Value = date
+                    };
+                    setDeclineCommand.Parameters.Add(dateParameter);
                     setDeclineCommand.Parameters.Add(studentParameter);
                     setDeclineCommand.Parameters.Add(subjectParameter);
                     setDeclineCommand.ExecuteNonQuery();

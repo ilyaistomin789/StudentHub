@@ -77,7 +77,9 @@ namespace StudentHub
                     {
                         hasProgress.Close();
                         m_ProgressTextBlock.Visibility = Visibility.Collapsed;
+                        m_ProgressSeparator.Visibility = Visibility.Collapsed;
                         dg_Progress.Visibility = Visibility.Collapsed;
+
                     }
                 }
             }
@@ -90,8 +92,8 @@ namespace StudentHub
         private void GetRetakeAndAdjustment()
         {
             string getRetakeQuery =
-                "SELECT SubjectName,CASE when RetakeStatus = 0 then 'В обработке' when RetakeStatus = 1 then 'Запрос отклонен' when RetakeStatus = 2 then 'Запрос принят' END Status, convert(varchar,RDate,104) [Date of retake] FROM Retake where StudentId = @StudentId";
-            string getAdjustmentQuery = "SELECT SubjectName,CASE when AdjustmentStatus = 0 then 'В обработке' when AdjustmentStatus = 1 then 'Запрос отклонен' when AdjustmentStatus = 2 then 'Запрос принят' END Status, convert(varchar,ADate,104) [Date of adjustment] FROM Adjustment where StudentId = @StudentId";
+                "SELECT SubjectName,CASE when RetakeStatus = 0 then 'In processing' when RetakeStatus = 1 then 'Request rejected' when RetakeStatus = 2 then 'Request accepted' END Status, convert(varchar,RDate,104) [Date of retake] FROM Retake where StudentId = @StudentId";
+            string getAdjustmentQuery = "SELECT SubjectName,CASE when AdjustmentStatus = 0 then 'In processing' when AdjustmentStatus = 1 then 'Request rejected' when AdjustmentStatus = 2 then 'Request accepted' END Status, convert(varchar,ADate,104) [Date of adjustment] FROM Adjustment where StudentId = @StudentId";
             try
             {
                 using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
@@ -128,6 +130,7 @@ namespace StudentHub
                     {
                         hasAdjustment.Close();
                         m_AdjustmentTextBlock.Visibility = Visibility.Collapsed;
+                        m_AdjustmentSeparator.Visibility = Visibility.Collapsed;
                         dg_Adjustments.Visibility = Visibility.Collapsed;
                     }
                     var hasRetakes = getRetakeCommand.ExecuteReader();
@@ -145,6 +148,7 @@ namespace StudentHub
                     {
                         hasRetakes.Close();
                         m_RetakeTextBlock.Visibility = Visibility.Collapsed;
+                        m_RetakeSeparator.Visibility = Visibility.Collapsed;
                         dg_Retakes.Visibility = Visibility.Collapsed;
                     }
                 }

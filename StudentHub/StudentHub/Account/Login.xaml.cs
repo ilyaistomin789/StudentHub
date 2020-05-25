@@ -120,9 +120,9 @@ namespace StudentHub.Account
                 return;
             }
 
-            if (logIn_Password.Password.Length < 6)
+            if (logIn_Password.Password.Length < 5)
             {
-                MessageBox.Show("Allowed password length: 6 characters");
+                MessageBox.Show("Allowed password length: 5 characters");
                 return;
             }
             try

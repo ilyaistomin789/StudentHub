@@ -30,7 +30,7 @@
                 <TextBlock Text="{DynamicResource s_DateOfIssue}" HorizontalAlignment="Center"/>
                 <Calendar x:Name="s_progressDateCalendar" Language="en-US"/>
             </StackPanel>
-            <Button x:Name="a_sendRequestButton" Content="{DynamicResource app_Save}" BorderThickness="6" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="A_sendRequestButton_OnClick"/>
+            <Button x:Name="a_sendRequestButton" Content="{DynamicResource app_Save}" Style="{StaticResource MainButtons}" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="A_sendRequestButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

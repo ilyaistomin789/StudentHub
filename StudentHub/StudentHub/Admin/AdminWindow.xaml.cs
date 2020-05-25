@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using StudentHub.Account;
 using StudentHub.Admin;
+using StudentHub.DataBase;
 
 namespace StudentHub
 {
@@ -62,7 +65,49 @@ namespace StudentHub
 
         private void ReportButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            reportStackPanel.Visibility = Visibility.Visible;
+            string processedAdjustments =
+                "SELECT COUNT(*) FROM Adjustment where AdjustmentStatus = 1 OR AdjustmentStatus = 2 ";
+            string rawAdjustments = "SELECT COUNT(*) FROM Adjustment where AdjustmentStatus = 0";
+            string processedRetakes = "SELECT COUNT(*) FROM Retake where RetakeStatus = 1 OR RetakeStatus = 2";
+            string rawRetakes = "SELECT COUNT(*) FROM Retake where RetakeStatus = 0";
+            string countOfUsers = "SELECT COUNT(*) FROM Users";
+            string getStudentsQuery =
+                "SELECT StudentName [Student], Course, GroupId [Group], Faculty, Specialization, convert(varchar,Birthday,104) [Birthday] FROM Student";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SqlDataBaseConnection.data))
+                {
+                    connection.Open();
+                    SqlCommand getProcessedAdjustmentsCommand = new SqlCommand(processedAdjustments,connection);
+                    SqlCommand getRawAdjustmentsCommand = new SqlCommand(rawAdjustments,connection);
+                    SqlCommand getProcessedRetakesCommand = new SqlCommand(processedRetakes,connection);
+                    SqlCommand getRawRetakesCommand = new SqlCommand(rawRetakes,connection);
+                    SqlCommand getCountUsersCommand = new SqlCommand(countOfUsers,connection);
+                    SqlCommand getStudents = new SqlCommand(getStudentsQuery,connection);
+                    getProcessedAdjustmentsCommand.CommandType = CommandType.Text;
+                    getRawAdjustmentsCommand.CommandType = CommandType.Text;
+                    getProcessedRetakesCommand.CommandType = CommandType.Text;
+                    getRawRetakesCommand.CommandType = CommandType.Text;
+                    getCountUsersCommand.CommandType = CommandType.Text;
+                    getStudents.CommandType = CommandType.Text;
+                    this.processedAdjustments.Text = getProcessedAdjustmentsCommand.ExecuteScalar().ToString();
+                    this.rawAdjustments.Text = getRawAdjustmentsCommand.ExecuteScalar().ToString();
+                    this.processedRetakes.Text = getProcessedRetakesCommand.ExecuteScalar().ToString();
+                    this.rawRetakes.Text = getRawRetakesCommand.ExecuteScalar().ToString();
+                    this.countOfUsers.Text = getCountUsersCommand.ExecuteScalar().ToString();
+                    getStudents.ExecuteNonQuery();
+                    SqlDataAdapter studentDataAdapter = new SqlDataAdapter(getStudents);
+                    DataTable dt = new DataTable("Student");
+                    studentDataAdapter.Fill(dt);
+                    dg_Students.ItemsSource = dt.DefaultView;
+                    studentDataAdapter.Update(dt);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void EmailButton_OnClick(object sender, RoutedEventArgs e)

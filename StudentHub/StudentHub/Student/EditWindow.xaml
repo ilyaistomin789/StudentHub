@@ -38,7 +38,7 @@
                 <TextBlock Text="{DynamicResource app_StudentBirthday}" HorizontalAlignment="Center"/>
                 <Calendar x:Name="e_birthdayCalendar" Language="en-US"/>
             </StackPanel>
-            <Button x:Name="e_editInformationButton" Content="{DynamicResource e_EditInformation}" BorderThickness="6" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="E_editInformationButton_OnClick"/>
+            <Button x:Name="e_editInformationButton" Content="{DynamicResource e_EditInformation}" Style="{StaticResource MainButtons}" Background="Cornsilk" Foreground="Black" Margin="10" Height="40" Width="140" Click="E_editInformationButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

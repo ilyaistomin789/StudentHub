@@ -34,7 +34,7 @@
                             <ComboBox x:Name="opt_GroupComboBox"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
-                            <Button x:Name="searchStudentButton" Content="{DynamicResource admin_SearchStudent}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchStudentButton_OnClick"/>
+                            <Button x:Name="searchStudentButton" Content="{DynamicResource admin_SearchStudent}" Style="{StaticResource MainButtons}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchStudentButton_OnClick"/>
                         </StackPanel>
                         <Grid Margin="0,40,0,0" x:Name="studentGrid">
                             <Grid.ColumnDefinitions>
@@ -78,9 +78,7 @@
                                     <TextBlock x:Name="curr_studentEmail" Margin="10,0,0,0"/>
                                 </StackPanel>
                             </StackPanel>
-
                         </Grid>
-
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -108,13 +106,15 @@
                             <ComboBox x:Name="curr_FacultyComboBox" Width="150"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
-                            <Button x:Name="searchGroupButton" Content="{DynamicResource admin_SearchGroup}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchGroupButton_OnClick"/>
+                            <Button x:Name="searchGroupButton" Content="{DynamicResource admin_SearchGroup}" Style="{StaticResource MainButtons}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchGroupButton_OnClick"/>
                         </StackPanel>
                     </StackPanel>
-                    <DataGrid x:Name="dg_StudentsOfGroup" Grid.Row="1" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="14" 
+                    <ScrollViewer Grid.Row="1">
+                    <DataGrid x:Name="dg_StudentsOfGroup" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="14" 
                               BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
                               CanUserResizeRows="False" RowBackground="Transparent" Background="Transparent" IsReadOnly="True"
                               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}"/>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Elders" Width="203">
@@ -129,14 +129,16 @@
                         <TextBox x:Name="elderNameTextBox" Width="200" Height="30" FontSize="20" TextChanged="ElderNameTextBox_OnTextChanged"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Orientation="Horizontal">
-                        <Button x:Name="searchElderButton" Content="{DynamicResource admin_SearchElder}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchElderButton_OnClick"/>
-                        <Button x:Name="searchAllEldersButton" Content="{DynamicResource admin_SearchAllElders}" Margin="5,0,0,0" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchAllEldersButton_OnClick"/>
+                            <Button x:Name="searchElderButton" Content="{DynamicResource admin_SearchElder}" Style="{StaticResource MainButtons}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchElderButton_OnClick"/>
+                            <Button x:Name="searchAllEldersButton" Content="{DynamicResource admin_SearchAllElders}" Style="{StaticResource MainButtons}" Margin="5,0,0,0" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchAllEldersButton_OnClick"/>
                     </StackPanel>
                     </StackPanel>
-                    <DataGrid x:Name="dg_Elders" Grid.Row="1" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="14" 
+                    <ScrollViewer Grid.Row="1">
+                    <DataGrid x:Name="dg_Elders" AutoGenerateColumns="True" FontFamily="Helvetica" FontSize="14" 
                               BorderBrush="Transparent" HeadersVisibility="Column" CanUserResizeColumns="False"
                               CanUserResizeRows="False" RowBackground="Transparent" Background="Transparent" IsReadOnly="True"
                               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}"/>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
         </TabControl>

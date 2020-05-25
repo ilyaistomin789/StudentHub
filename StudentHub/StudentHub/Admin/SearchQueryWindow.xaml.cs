@@ -47,6 +47,7 @@ namespace StudentHub.Admin
                     while (specialization.Read())
                     {
                         curr_SpecializationComboBox.Items.Add(specialization.GetString(0));
+                        opt_SpecializationComboBox.Items.Add(specialization.GetString(0));
                     }
                     specialization.Close();
                     var faculties = getFacultiesCommand.ExecuteReader();
@@ -78,6 +79,7 @@ namespace StudentHub.Admin
         private void SearchStudentButton_OnClick(object sender, RoutedEventArgs e)
         {
             string getStudentInfo = "SELECT * FROM Student WHERE StudentName LIKE '%' + @StudentName + '%' ";
+            string getCountRows = "SELECT COUNT(*) FROM Student WHERE StudentName LIKE '%' + @StudentName + '%' ";
             if (studentNameTextBox.Text == String.Empty)
             {
                 MessageBox.Show("Please, enter the Student name");
@@ -124,13 +126,17 @@ namespace StudentHub.Admin
                         {
                             while (student.Read())
                             {
-                                curr_studentName.Text = student.GetString(1);
+                                curr_studentName.Text = student.GetString(2);
                                 curr_studentStatus.Text = student.GetString(3);
                                 curr_studentCourse.Text = student.GetInt32(4).ToString();
                                 curr_studentGroup.Text = student.GetInt32(5).ToString();
-                                curr_studentFaculty.Text = student.GetString(6);
-                                curr_studentBirthday.Text = student.GetDateTime(7).ToString("d");
+                                curr_studentSpec.Text = student.GetString(6);
+                                curr_studentFaculty.Text = student.GetString(7);
+                                curr_studentBirthday.Text = student.GetDateTime(8).ToString("d");
+                                curr_studentEmail.Text = student.GetString(9);
                             }
+                            firstColumnStackPanel.Visibility = Visibility.Visible;
+                            secondColumnStackPanel.Visibility = Visibility.Visible;
                         }
                         else
                         {
@@ -140,47 +146,61 @@ namespace StudentHub.Admin
                     }
                     else
                     {
+                        SqlCommand getCountRowsCommand = new SqlCommand(getCountRows,connection);
                         SqlCommand getStudentInfoCommand = new SqlCommand(getStudentInfo, connection);
                         getStudentInfoCommand.CommandType = CommandType.Text;
+                        getCountRowsCommand.CommandType = CommandType.Text;
                         SqlParameter studentName = new SqlParameter
                         {
                             ParameterName = "@StudentName",
                             Value = studentNameTextBox.Text
                         };
+                        SqlParameter studentName4Rows = new SqlParameter
+                        {
+                            ParameterName = "@StudentName",
+                            Value = studentNameTextBox.Text
+                        };
                         getStudentInfoCommand.Parameters.Add(studentName);
-                        if (getStudentInfoCommand.ExecuteNonQuery() > 1)
+                        getCountRowsCommand.Parameters.Add(studentName4Rows);
+                        var rows = getCountRowsCommand.ExecuteReader();
+                        while (rows.Read())
                         {
-                            MessageBox.Show(
-                                "More than one student was found, please fill in the new fields for a more accurate search");
-                            curr_StudentCourseStackPanel.Visibility = Visibility.Visible;
-                            curr_StudentGroupStackPanel.Visibility = Visibility.Visible;
-                            curr_StudentSpecStackPanel.Visibility = Visibility.Visible;
-                            return;
-                        }
-                        else
-                        {
-                            firstColumnStackPanel.Visibility = Visibility.Visible;
-                            secondColumnStackPanel.Visibility = Visibility.Visible;
-                            var student = getStudentInfoCommand.ExecuteReader();
-                            if (student.HasRows)
+                            if (rows.GetInt32(0) > 1)
                             {
-                                while (student.Read())
-                                {
-                                    curr_studentName.Text = student.GetString(2);
-                                    curr_studentStatus.Text = student.GetString(3);
-                                    curr_studentCourse.Text = student.GetInt32(4).ToString();
-                                    curr_studentGroup.Text = student.GetInt32(5).ToString();
-                                    curr_studentSpec.Text = student.GetString(6);
-                                    curr_studentFaculty.Text = student.GetString(7);
-                                    curr_studentBirthday.Text = student.GetDateTime(8).ToString("d");
-                                    curr_studentEmail.Text = student.GetString(9);
-                                }
-                                student.Close();
+                                rows.Close();
+                                MessageBox.Show(
+                                    "More than one student was found, please fill in the new fields for a more accurate search");
+                                curr_StudentCourseStackPanel.Visibility = Visibility.Visible;
+                                curr_StudentGroupStackPanel.Visibility = Visibility.Visible;
+                                curr_StudentSpecStackPanel.Visibility = Visibility.Visible;
+                                return;
                             }
                             else
                             {
-                                MessageBox.Show("Error when searching for students");
-                                return;
+                                rows.Close();
+                                firstColumnStackPanel.Visibility = Visibility.Visible;
+                                secondColumnStackPanel.Visibility = Visibility.Visible;
+                                var student = getStudentInfoCommand.ExecuteReader();
+                                if (student.HasRows)
+                                {
+                                    while (student.Read())
+                                    {
+                                        curr_studentName.Text = student.GetString(2);
+                                        curr_studentStatus.Text = student.GetString(3);
+                                        curr_studentCourse.Text = student.GetInt32(4).ToString();
+                                        curr_studentGroup.Text = student.GetInt32(5).ToString();
+                                        curr_studentSpec.Text = student.GetString(6);
+                                        curr_studentFaculty.Text = student.GetString(7);
+                                        curr_studentBirthday.Text = student.GetDateTime(8).ToString("d");
+                                        curr_studentEmail.Text = student.GetString(9);
+                                    }
+                                    student.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error when searching for students");
+                                    return;
+                                }
                             }
                         }
                     }
@@ -302,12 +322,23 @@ namespace StudentHub.Admin
                         Value = elderNameTextBox.Text
                     };
                     getElderCommand.Parameters.Add(elderNameParameter);
-                    getElderCommand.ExecuteNonQuery();
-                    SqlDataAdapter elderDataAdapter = new SqlDataAdapter(getElderCommand);
-                    DataTable dt = new DataTable("Student");
-                    elderDataAdapter.Fill(dt);
-                    dg_Elders.ItemsSource = dt.DefaultView;
-                    elderDataAdapter.Update(dt);
+                    var elder = getElderCommand.ExecuteReader();
+                    if (elder.HasRows)
+                    {
+                        elder.Close();
+                        getElderCommand.ExecuteNonQuery();
+                        SqlDataAdapter elderDataAdapter = new SqlDataAdapter(getElderCommand);
+                        DataTable dt = new DataTable("Student");
+                        elderDataAdapter.Fill(dt);
+                        dg_Elders.ItemsSource = dt.DefaultView;
+                        elderDataAdapter.Update(dt);
+                    }
+                    else
+                    {
+                        elder.Close();
+                        MessageBox.Show("Error when searching elder");
+                        return;
+                    }
                 }
             }
             catch (Exception exception)

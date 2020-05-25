@@ -120,8 +120,8 @@
                         Background="White"
                         Opacity="0.5"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,20,0,0">
-                    <Button x:Name="reg_SignUp" Width="100" Height="40" Content="{StaticResource acc_Registration}" Click="Reg_SignUp_OnClick"/>
-                    <Button x:Name="reg_GoToLogin" Width="100" Height="40" Content="{StaticResource signIn_GoToLogin}" Margin="0,15,0,0" Click="Reg_GoToLogin_OnClick"/>
+                    <Button x:Name="reg_SignUp" Width="100" Height="40" Style="{StaticResource MainButtons}" Content="{StaticResource acc_Registration}" Click="Reg_SignUp_OnClick"/>
+                    <Button x:Name="reg_GoToLogin" Width="100" Height="40" Style="{StaticResource MainButtons}" Content="{StaticResource signIn_GoToLogin}" Margin="0,15,0,0" Click="Reg_GoToLogin_OnClick"/>
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Row="1" 

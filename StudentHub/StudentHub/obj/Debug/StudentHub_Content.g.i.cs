@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/window/preferences-desktop-user.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/window/sm.png")]
 
 

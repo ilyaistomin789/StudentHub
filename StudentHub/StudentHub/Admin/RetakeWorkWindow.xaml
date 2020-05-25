@@ -19,8 +19,8 @@
                       CanUserResizeRows="False" Width="1250" RowBackground="Transparent" Background="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" ColumnWidth="150" ColumnHeaderStyle="{StaticResource DataGridColumnHeader}" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="acceptButton" Content="{DynamicResource admin_Accept}" Background="#FF33EA33" Width="100" Height="40" Margin="5" Click="AcceptButton_OnClick"/>
-            <Button x:Name="declineButton" Content="{DynamicResource admin_Decline}" Background="#FFF04747" Width="100" Height="40" Margin="5" Click="DeclineButton_OnClick"/>
+            <Button x:Name="acceptButton" Content="{DynamicResource admin_Accept}" Style="{StaticResource MainButtons}" Background="#FF33EA33" Width="100" Height="40" Margin="5" Click="AcceptButton_OnClick"/>
+            <Button x:Name="declineButton" Content="{DynamicResource admin_Decline}" Style="{StaticResource MainButtons}"  Background="#FFF04747" Width="100" Height="40" Margin="5" Click="DeclineButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

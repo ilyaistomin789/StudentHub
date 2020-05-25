@@ -18,7 +18,7 @@
             <TextBox x:Name="studentNameTextBox" Width="200" Height="30" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="searchButton" Content="{DynamicResource admin_SearchStudent}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchButton_OnClick"/>
+            <Button x:Name="searchButton" Content="{DynamicResource admin_SearchStudent}" Style="{StaticResource MainButtons}" Height="50" Width="170" Foreground="Black" BorderBrush="Black" Background="AntiqueWhite" Click="SearchButton_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>
