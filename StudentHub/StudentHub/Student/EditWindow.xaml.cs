@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -92,6 +93,11 @@ namespace StudentHub
 
         private void E_editInformationButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (!Regex.IsMatch(e_fioTextBox.Text,"^[a-zA-Z\\s]{2,39}$"))
+            {
+                MessageBox.Show("Incorrect Student FIO");
+                return;
+            }
             string setStudentFieldsProcedure = "SET_STUDENT_FIELDS";
             try
             {

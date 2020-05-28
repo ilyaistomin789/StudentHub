@@ -11,6 +11,7 @@
         Icon="../Sources/Window/user.ico"
         Title="Student Hub" Height="650" Width="1000"
         WindowStyle="None" ResizeMode="NoResize"
+        
         AllowsTransparency="True" Background="Transparent">
     <Grid>
         <Grid.ColumnDefinitions>

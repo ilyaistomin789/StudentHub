@@ -44,6 +44,11 @@ namespace StudentHub
             studentNameTextBlock.Text = " " + _student.Name;
             GetStudentRatings();
             GetRetakeAndAdjustment();
+            this.Show();
+            if (_student.Name == "undefined" && this.IsLoaded)
+            {
+                MessageBox.Show("Please, edit your information");
+            }
         }
 
         private void GetStudentRatings()

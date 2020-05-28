@@ -162,7 +162,6 @@ namespace StudentHub.Account
                             SqlDataBaseConnection.ApplyUserPrivileges();
                             SetStudentFields(Convert.ToInt32(currentUser.UserId),connection);
                             _window = new MainWindow(_student);
-                            _window.Show();
                             this.Close();
                         }
                     }

@@ -16,5 +16,5 @@ D:\Visual Studio 2019\OOP(C#)\My Project 2020\StudentHub\StudentHub\App.xaml
 18-1368618002
 Account\Login.xaml;Account\SignUp.xaml;Admin\ConfirmGenerateWindow.xaml;Admin\EmailGenerationWindow.xaml;Admin\SearchQueryWindow.xaml;Admin\SearchStudentWindow.xaml;Admin\ViewProgressWindow.xaml;Student\AdjustmentWindow.xaml;Admin\AdminWindow.xaml;Admin\AdjustmentWorkWindow.xaml;Admin\BadStudentsWindow.xaml;Admin\GapsWorkWindow.xaml;Admin\RetakeWorkWindow.xaml;Decoration\ButtonTheme.xaml;Decoration\ElementProperty.xaml;Student\EditWindow.xaml;Student\MainWindow.xaml;Student\PutGapsWindow.xaml;Student\RetakeWindow.xaml;Student\SetRatingsWindow.xaml;Student\ShowInformationWindow.xaml;Sources\Languages\lang.ru-RU.xaml;Sources\Languages\lang.xaml;
 
-False
+True
 

@@ -163,46 +163,48 @@ namespace StudentHub.Admin
                         getStudentInfoCommand.Parameters.Add(studentName);
                         getCountRowsCommand.Parameters.Add(studentName4Rows);
                         var rows = getCountRowsCommand.ExecuteReader();
+                        int count = 0;
                         while (rows.Read())
                         {
-                            if (rows.GetInt32(0) > 1)
+                            count = rows.GetInt32(0);
+                        }
+                        rows.Close();
+                        if (count > 1)
+                        {
+                            MessageBox.Show(
+                                "More than one student was found, please fill in the new fields for a more accurate search");
+                            curr_StudentCourseStackPanel.Visibility = Visibility.Visible;
+                            curr_StudentGroupStackPanel.Visibility = Visibility.Visible;
+                            curr_StudentSpecStackPanel.Visibility = Visibility.Visible;
+                            return;
+                        }
+                        else
+                        {
+                            firstColumnStackPanel.Visibility = Visibility.Visible;
+                            secondColumnStackPanel.Visibility = Visibility.Visible;
+                            var student = getStudentInfoCommand.ExecuteReader();
+                            if (student.HasRows)
                             {
-                                rows.Close();
-                                MessageBox.Show(
-                                    "More than one student was found, please fill in the new fields for a more accurate search");
-                                curr_StudentCourseStackPanel.Visibility = Visibility.Visible;
-                                curr_StudentGroupStackPanel.Visibility = Visibility.Visible;
-                                curr_StudentSpecStackPanel.Visibility = Visibility.Visible;
-                                return;
+                                while (student.Read())
+                                {
+                                    curr_studentName.Text = student.GetString(2);
+                                    curr_studentStatus.Text = student.GetString(3);
+                                    curr_studentCourse.Text = student.GetInt32(4).ToString();
+                                    curr_studentGroup.Text = student.GetInt32(5).ToString();
+                                    curr_studentSpec.Text = student.GetString(6);
+                                    curr_studentFaculty.Text = student.GetString(7);
+                                    curr_studentBirthday.Text = student.GetDateTime(8).ToString("d");
+                                    curr_studentEmail.Text = student.GetString(9);
+                                }
+                                student.Close();
                             }
                             else
                             {
-                                rows.Close();
-                                firstColumnStackPanel.Visibility = Visibility.Visible;
-                                secondColumnStackPanel.Visibility = Visibility.Visible;
-                                var student = getStudentInfoCommand.ExecuteReader();
-                                if (student.HasRows)
-                                {
-                                    while (student.Read())
-                                    {
-                                        curr_studentName.Text = student.GetString(2);
-                                        curr_studentStatus.Text = student.GetString(3);
-                                        curr_studentCourse.Text = student.GetInt32(4).ToString();
-                                        curr_studentGroup.Text = student.GetInt32(5).ToString();
-                                        curr_studentSpec.Text = student.GetString(6);
-                                        curr_studentFaculty.Text = student.GetString(7);
-                                        curr_studentBirthday.Text = student.GetDateTime(8).ToString("d");
-                                        curr_studentEmail.Text = student.GetString(9);
-                                    }
-                                    student.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Error when searching for students");
-                                    return;
-                                }
+                                MessageBox.Show("Error when searching for students");
+                                return;
                             }
                         }
+
                     }
                 }
             }
